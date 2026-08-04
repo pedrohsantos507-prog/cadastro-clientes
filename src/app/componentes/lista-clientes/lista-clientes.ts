@@ -1,9 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Cliente } from '../../models/cliente';
+import { ClienteService } from '../../services/cliente.service';
 
 @Component({
   selector: 'app-lista-clientes',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './lista-clientes.html',
-  styleUrl: './lista-clientes.css',
+  styleUrl: './lista-clientes.css'
 })
-export class ListaClientes {}
+export class ListaClientes implements OnInit {
+
+  clientes: Cliente[] = [];
+
+  constructor(private clienteService: ClienteService) {}
+
+  ngOnInit(): void {
+    this.clientes = this.clienteService.listar();
+  }
+
+}
