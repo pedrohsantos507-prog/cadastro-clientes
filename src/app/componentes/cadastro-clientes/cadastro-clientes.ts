@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Cliente } from '../../models/cliente';
 import { ClienteService } from '../../services/cliente.service';
@@ -10,7 +10,7 @@ import { ClienteService } from '../../services/cliente.service';
   templateUrl: './cadastro-clientes.html',
   styleUrl: './cadastro-clientes.css'
 })
-export class CadastroCliente {
+export class CadastroCliente implements OnInit {
 
   cliente: Cliente = {
     nome: '',
@@ -19,19 +19,37 @@ export class CadastroCliente {
     telefone: ''
   };
 
-  constructor(private clienteService: ClienteService) {}
+  constructor(public clienteService: ClienteService) {}
+ngOnInit(): void {
+  const cliente = this.clienteService.obterClienteEdicao();
 
-  cadastrar() {
+  if(cliente) {
+    this.cliente = {...cliente };
+  }
+}
+   cadastrar() {
+
+  if (this.clienteService.estaEditando()) {
+
+    this.clienteService.atualizar({ ...this.cliente });
+
+    alert('Cliente atualizado com sucesso!');
+
+  } else {
+
     this.clienteService.adicionar({ ...this.cliente });
 
-    this.cliente = {
-      nome: '',
-      cpf: '',
-      email: '',
-      telefone: ''
-    };
-
     alert('Cliente cadastrado com sucesso!');
+
   }
+
+  this.cliente = {
+    nome: '',
+    cpf: '',
+    email: '',
+    telefone: ''
+  };
+
+}
 
 }

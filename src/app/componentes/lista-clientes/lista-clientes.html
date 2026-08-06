@@ -1,30 +1,29 @@
 <section class="lista-cliente">
-
   <h2>Lista de Clientes</h2>
 
   <table>
-
     <thead>
       <tr>
         <th>Nome</th>
         <th>Telefone</th>
         <th>E-mail</th>
         <th>Cpf</th>
+        <th>ações</th>
       </tr>
     </thead>
 
     <tbody>
-
-      <tr *ngFor="let cliente of clienteFiltrados(); let i = index">
-
+      <tr *ngFor="let cliente of clientes; let i = index">
         <td>{{ cliente.nome }}</td>
         <td>{{ cliente.telefone }}</td>
         <td>{{ cliente.email }}</td>
+        <td>{{ cliente.cpf }}</td>
 
         <td>
-          <button class="editar">editar</button>
-          <button class="excluir">excluir</button>
+          <button class="editar" (click)=editar(i)>editar</button>
+          <button class="excluir" (click)="excluir(i)">excluir</button>
         </td>
       </tr>
     </tbody>
+  </table>
 </section>

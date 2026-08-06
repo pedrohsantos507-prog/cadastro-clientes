@@ -35,7 +35,7 @@ export class ClienteService {
   }
 
   listar(): Cliente[] {
-    return this.clientes;
+    return [...this.clientes];
   }
 
   adicionar(cliente: Cliente): void {
@@ -55,9 +55,12 @@ export class ClienteService {
     }
   }
   estaEditando(): boolean {
-    return this.indiceEdicao !== -1 
+    return this.indiceEdicao !== -1;
 
     
+  }
+  obterClienteEdicao(): Cliente | null {
+    return this.clienteEmEdicao;
   }
 
 }
