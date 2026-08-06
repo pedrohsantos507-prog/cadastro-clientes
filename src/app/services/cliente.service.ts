@@ -7,6 +7,28 @@ import { Cliente } from '../models/cliente';
 export class ClienteService {
 
   private clientes: Cliente[] = [];
+  clienteEmEdicao: Cliente | null = null;
+  indiceEdicao: number = -1;
+
+  editar(indice: number): void{
+    this.indiceEdicao = indice;
+    this.clienteEmEdicao = {...this.clientes[indice] }; 
+  }
+
+  atualizar(cliente: Cliente): void {
+    if (this.indiceEdicao !== -1) {
+      this.clientes[this.indiceEdicao] = cliente;
+      this.salvarClientes();
+
+      this.indiceEdicao = -1;
+      this.clienteEmEdicao = null;
+    }
+  }
+
+  excluir(indice: number): void {
+    this.clientes.splice(indice, 1);
+    this.salvarClientes();
+  }
 
   constructor() {
     this.carregarClientes();
@@ -31,6 +53,11 @@ export class ClienteService {
     if (dados) {
       this.clientes = JSON.parse(dados);
     }
+  }
+  estaEditando(): boolean {
+    return this.indiceEdicao !== -1 
+
+    
   }
 
 }

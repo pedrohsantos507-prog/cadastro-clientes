@@ -1,59 +1,67 @@
-.container{
-
-    margin-top:20px;
-
+.lista-clientes{
+    max-width:1000px;
+    margin:30px auto;
     background:white;
-
-    padding:25px;
-
+    padding:30px;
     border-radius:10px;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.1);
-
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
 }
 
-h2{
-
-    margin-bottom:20px;
-
-    color:#374151;
-
+.lista-clientes h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#1976d2;
 }
 
 table{
-
     width:100%;
-
     border-collapse:collapse;
-
-}
-
-thead{
-
-    background:#2563eb;
-
-    color:white;
-
 }
 
 th{
-
-    padding:15px;
-
+    background:#1976d2;
+    color:white;
+    padding:14px;
 }
 
 td{
-
-    padding:15px;
-
+    padding:14px;
     text-align:center;
-
     border-bottom:1px solid #ddd;
-
 }
 
-tbody tr:hover{
+tr:nth-child(even){
+    background:#f8f9fa;
+}
 
-    background:#f5f5f5;
+tr:hover{
+    background:#eceff1;
+}
 
+button{
+    border:none;
+    padding:8px 16px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.editar{
+    background:#ffc107;
+    color:#000;
+    margin-right:8px;
+}
+
+.editar:hover{
+    background:#e0a800;
+}
+
+.excluir{
+    background:#dc3545;
+    color:white;
+}
+
+.excluir:hover{
+    background:#bb2d3b;
 }
