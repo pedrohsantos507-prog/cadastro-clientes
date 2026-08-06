@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Cliente } from '../../models/cliente';
 import { ClienteService } from '../../services/cliente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-clientes',
@@ -13,13 +14,18 @@ import { ClienteService } from '../../services/cliente.service';
 export class ListaClientes implements OnInit {
   clientes: Cliente[] = [];
 
-  constructor(private clienteService: ClienteService) {}
+  constructor(
+    private clienteService: ClienteService, 
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.clientes = this.clienteService.listar();
   }
   editar(indice: number) {
     this.clienteService.editar(indice);
+
+    this.router.navigate(['/cadastro'])
   }
 
   excluir(indice:number) {

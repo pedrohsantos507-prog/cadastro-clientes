@@ -11,13 +11,16 @@ export class ClienteService {
   indiceEdicao: number = -1;
 
   editar(indice: number): void{
+
+    if (indice >= 0 && indice < this.clientes.length) {
+
     this.indiceEdicao = indice;
     this.clienteEmEdicao = {...this.clientes[indice] }; 
   }
-
+}
   atualizar(cliente: Cliente): void {
     if (this.indiceEdicao !== -1) {
-      this.clientes[this.indiceEdicao] = cliente;
+      this.clientes[this.indiceEdicao] = { ...cliente };
       this.salvarClientes();
 
       this.indiceEdicao = -1;

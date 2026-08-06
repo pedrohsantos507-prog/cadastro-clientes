@@ -14,8 +14,26 @@
     <label>Telefone</label>
     <input type="text" name="telefone" [(ngModel)]="cliente.telefone" required />
 
+    <label>CEP</label>
+    <input type="text" name="cep" [(ngModel)]="cliente.cep" (blur)required/>
+
+    <label>Endereço</label>
+    <input type="text" name="endereco" [(ngModel)]="cliente.endereco"readonly/>
+
+    <label>Bairro</label>
+    <input type="text" name="bairro" [(ngModel)]="cliente.bairro"reandoly/>
+
+    <label>Cidade</label>
+    <input type="text" name="cidade" [(ngModel)]="cliente.cidade"required/>
+
+    <label>UF</label>
+    <input type="text" name="uf" maxlength="2" [(ngModel)]="cliente.uf"reandoly/>
+
+    <label>Complemento</label>
+    <input type="text" name="complemento" [(ngModel)]="cliente.complemento"/>
+
     <button type="submit">
-      {{ clienteService.estaEditando() ? 'atualizar' : 'cadastrar' }}
+      {{ clienteService.estaEditando() ? 'atualizar Cliente' : 'cadastrar Cliente' }}
     </button>
   </form>
 </div>
