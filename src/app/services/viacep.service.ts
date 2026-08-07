@@ -3,12 +3,12 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
-    providendIn: 'root'
+    providedIn: 'root'
 })
 export class ViaCepService {
     constructor(private http: HttpClient) {}
 
     buscarCep(cep: string): Observable<any> {
-        return this.http.get('https://viacep.com.br/ws/${cep}/json/');
+        return this.http.get(`https://viacep.com.br/ws/${cep}/json/`);
     }
 }

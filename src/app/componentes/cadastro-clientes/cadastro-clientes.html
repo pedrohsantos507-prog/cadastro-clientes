@@ -15,7 +15,7 @@
     <input type="text" name="telefone" [(ngModel)]="cliente.telefone" required />
 
     <label>CEP</label>
-    <input type="text" name="cep" [(ngModel)]="cliente.cep" (blur)required/>
+    <input type="text" name="cep" [(ngModel)]="cliente.cep" (blur)="buscarCep ()"/>
 
     <label>Endereço</label>
     <input type="text" name="endereco" [(ngModel)]="cliente.endereco"readonly/>
